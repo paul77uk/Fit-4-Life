@@ -1,0 +1,11 @@
+<%= form_with(model: workout) do |f| %>
+  <% if workout.errors.any? %>
+    
+      <%= workout.errors.full_messages.to_sentence.capitalize %>
+    
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit class: "" %>
+<% end %>

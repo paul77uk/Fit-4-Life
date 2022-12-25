@@ -1,0 +1,15 @@
+<div class="flex justify-between border shadow-md mb-3 py-3 px-5 items-center rounded-lg">
+  <div>
+    <%= link_to workout.name, workout_path(workout), class: "text-red-700 text-lg" %>
+  </div>
+
+  <div class="flex gap-2">
+    <%= button_to workout_path(workout), method: :delete, class: "bg-gray-200 py-2 px-3 rounded-md" do %>
+      <i class="fa-regular fa-trash-can fa-xl"></i>
+    <% end %>
+    <%= link_to edit_workout_path(workout), class: "bg-gray-200 py-2 px-3 rounded-md" do %>
+      <i class="fa-regular fa-pen-to-square fa-xl"></i>
+    <% end %>
+                  
+  </div>
+</div>
