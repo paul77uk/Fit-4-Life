@@ -20,7 +20,7 @@ class WorkoutsTest < ApplicationSystemTestCase
     fill_in 'Name', with: 'Capybara workout'
 
     assert_selector 'h1', text: 'Workouts'
-    click_on 'Create Workout'
+    click_on 'submit'
 
     # We expect to still be on the same page with the title "Workout"
     # and to see our "Capybara workout" added to the list
@@ -43,7 +43,7 @@ class WorkoutsTest < ApplicationSystemTestCase
     fill_in 'Name', with: 'Updated workout'
 
     assert_selector 'h1', text: 'Workouts'
-    click_on 'Update Workout'
+    click_on 'submit'
 
     assert_selector 'h1', text: 'Workouts'
     assert_text 'Updated workout'
