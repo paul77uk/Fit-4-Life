@@ -1,7 +1,7 @@
   <%= link_to sanitize("&larr; Back to workout"), workout_path(@workout) %>
 
+  <h1>Edit workout</h1>
   
-    <h1>Edit workout</h1>
-  
-
-  <%= render "form", workout: @workout %>
+  <%= turbo_frame_tag @workout do %>
+    <%= render "form", workout: @workout %>
+  <% end %>

@@ -1,15 +1,17 @@
-<div class="flex justify-between border shadow-md mb-3 py-3 px-5 items-center rounded-lg">
-  <div>
-    <%= link_to workout.name, workout_path(workout), class: "text-red-700 text-lg" %>
-  </div>
+<%= turbo_frame_tag workout do %>
+  <div class="flex justify-between border shadow-md mb-4 py-3 px-5 items-center rounded-lg">
+    <div>
+      <%= link_to workout.name, workout_path(workout), data: { turbo_frame: "_top" }, class: "text-red-700 text-lg hover:text-red-600" %>
+    </div>
 
-  <div class="flex gap-2">
-    <%= button_to workout_path(workout), method: :delete, class: "bg-gray-200 py-2 px-3 rounded-md" do %>
-      <i class="fa-regular fa-trash-can fa-xl"></i>
-    <% end %>
-    <%= link_to edit_workout_path(workout), class: "bg-gray-200 py-2 px-3 rounded-md" do %>
-      <i class="fa-regular fa-pen-to-square fa-xl"></i>
-    <% end %>
-                  
+    <div class="flex gap-2">
+      <%= button_to workout_path(workout), method: :delete, id: 'Delete', class: "bg-gray-200 py-2 px-3 rounded-md hover:bg-gray-300" do %>
+        <i class="fa-regular fa-trash-can fa-xl"></i>
+      <% end %>
+      <%= link_to edit_workout_path(workout), id: 'Edit', class: "bg-gray-200 py-2 px-3 rounded-md hover:bg-gray-300" do %>
+        <i class="fa-regular fa-pen-to-square fa-xl"></i>
+      <% end %>
+                    
+    </div>
   </div>
-</div>
+<% end %>

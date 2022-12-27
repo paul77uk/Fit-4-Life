@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class WorkoutsTest < ApplicationSystemTestCase
   setup do
-    @workout = workouts(:first) # Reference to the first fixture workout
+    @workout = Workout.ordered.first # Reference to the first fixture workout
   end
 
   test 'Creating a new workout' do
@@ -12,16 +12,17 @@ class WorkoutsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Workouts'
 
     # When we click on the link with the text "New Workout
-    # we expect to land on a page with the title "New workout"
+    # we expect to stay on the same page with the title "Workouts"
     click_on 'New workout'
-    assert_selector 'h1', text: 'New workout'
 
     # When we fill in the name input with "Capybara workout
     # and we click on "Create Workout"
     fill_in 'Name', with: 'Capybara workout'
+
+    assert_selector 'h1', text: 'Workouts'
     click_on 'Create Workout'
 
-    # We expect to be back on the page with the title "Workout"
+    # We expect to still be on the same page with the title "Workout"
     # and to see our "Capybara workout" added to the list
     assert_selector 'h1', text: 'Workouts'
     assert_text 'Capybara workout'
@@ -39,9 +40,9 @@ class WorkoutsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Workouts'
 
     click_on 'Edit', match: :first
-    assert_selector 'h1', text: 'Edit workout'
-
     fill_in 'Name', with: 'Updated workout'
+
+    assert_selector 'h1', text: 'Workouts'
     click_on 'Update Workout'
 
     assert_selector 'h1', text: 'Workouts'

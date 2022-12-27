@@ -2,7 +2,7 @@ class WorkoutsController < ApplicationController
   before_action :set_workout, only: %i[show edit update destroy]
 
   def index
-    @workouts = Workout.all
+    @workouts = Workout.ordered
   end
 
   def show; end
@@ -33,7 +33,11 @@ class WorkoutsController < ApplicationController
 
   def destroy
     @workout.destroy
-    redirect_to workouts_path, notice: 'Workout was successfully destroyed.'
+
+    respond_to do |format|
+      format.html { redirect_to workouts_path, notice: 'Workout was successfully destroyed.' }
+      format.turbo_stream
+    end
   end
 
   private
