@@ -135,7 +135,6 @@ GEM
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (1.4.5)
     propshaft (0.6.4)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -230,7 +229,6 @@ DEPENDENCIES
   devise (~> 4.8.1)
   importmap-rails
   jbuilder
-  pg
   propshaft
   puma (~> 5.0)
   rails (~> 7.0.4)
