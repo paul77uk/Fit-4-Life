@@ -14,12 +14,12 @@ class WorkoutsTest < ApplicationSystemTestCase
     # When we click on the link with the text "New Workout
     # we expect to stay on the same page with the title "Workouts"
     click_on 'New workout'
+    assert_selector 'h1', text: 'Workouts'
 
     # When we fill in the name input with "Capybara workout
     # and we click on "Create Workout"
     fill_in 'Name', with: 'Capybara workout'
 
-    assert_selector 'h1', text: 'Workouts'
     click_on 'submit'
 
     # We expect to still be on the same page with the title "Workout"
@@ -42,7 +42,6 @@ class WorkoutsTest < ApplicationSystemTestCase
     click_on 'Edit', match: :first
     fill_in 'Name', with: 'Updated workout'
 
-    assert_selector 'h1', text: 'Workouts'
     click_on 'submit'
 
     assert_selector 'h1', text: 'Workouts'

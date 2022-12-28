@@ -1,8 +1,9 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   def index
-    @workouts = Workout.ordered
+    @workouts = Workout.authenticated_users_workouts(current_user.id).ordered
   end
 
   def show; end
@@ -13,6 +14,7 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = Workout.new(workout_params)
+    @workout.user = current_user
 
     if @workout.save
       redirect_to workouts_path, notice: 'Workout was successfully created.'

@@ -6,14 +6,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
+
+    <nav class="flex justify-between text-right border-b border-gray-300 shadow-md py-3 px-4">
+      <div class="font-bold text-lg"><span class="text-red-700">-||-</span> Fit-4-Life <span class="text-red-700">-||-</span></div>
+      <% if user_signed_in? %>
+        <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
+      <% else %>
+        <%= link_to 'Sign in', new_user_session_path %>
+      <% end %>
+    </nav>
+
     <main class="container mx-auto mt-10 px-5">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
+
   </body>
 </html>
